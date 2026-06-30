@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeadFlow Agency — More Calls. More Jobs. Guaranteed.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A4A8A;
+      --accent: #2E9BF5;
+      --light: #EBF4FF;
+      --dark: #0D1B2E;
+      --gray: #6B7280;
+      --light-gray: #F8FAFC;
+      --white: #FFFFFF;
+      --green: #10B981;
+      --red: #EF4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #E5EAF0;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--blue); letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: white; border: none; cursor: pointer;
+      padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1A7DD4; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 5% 100px;
+      background: linear-gradient(135deg, #0D1B2E 0%, #1A4A8A 60%, #2E9BF5 100%);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(46,155,245,0.2);
+      border: 1px solid rgba(46,155,245,0.4);
+      color: #7EC8F8;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; color: white;
+      line-height: 1.1; letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 1.2rem; color: rgba(255,255,255,0.8);
+      max-width: 580px; margin: 0 auto 40px;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: white;
+      padding: 16px 36px; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(46,155,245,0.4);
+    }
+    .btn-primary:hover { background: #1A7DD4; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 16px 36px; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: white; }
+    .hero-stats {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+      margin-top: 64px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: white; }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+    /* ── SOCIAL PROOF TICKER ── */
+    .ticker {
+      background: var(--accent);
+      padding: 14px 0; overflow: hidden;
+    }
+    .ticker-inner {
+      display: flex; gap: 60px; white-space: nowrap;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker span { color: white; font-weight: 600; font-size: 0.9rem; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 5%; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800; color: var(--dark);
+      letter-spacing: -0.5px; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray); max-width: 560px; }
+    .section-center { text-align: center; }
+    .section-center .section-sub { margin: 0 auto; }
+
+    /* ── PROBLEM ── */
+    .problem { background: var(--light-gray); }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .problem-card {
+      background: white; border-radius: 14px;
+      padding: 28px; border: 1px solid #E5EAF0;
+    }
+    .problem-icon {
+      width: 48px; height: 48px; background: #FEF2F2;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 16px;
+    }
+    .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray); }
+
+    /* ── HOW IT WORKS ── */
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .step {
+      display: flex; gap: 28px; padding: 32px 0;
+      border-bottom: 1px solid #E5EAF0;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 52px; height: 52px; min-width: 52px;
+      background: var(--blue); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 800;
+    }
+    .step-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .step-body p { font-size: 0.95rem; color: var(--gray); }
+    .step-body .tag {
+      display: inline-block; background: var(--light);
+      color: var(--blue); font-size: 0.75rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 100px; margin-top: 8px;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--light-gray); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 56px; align-items: start;
+    }
+    .pricing-card {
+      background: white; border-radius: 16px;
+      padding: 36px; border: 2px solid #E5EAF0;
+      position: relative; transition: all 0.2s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .pricing-card.featured {
+      border-color: var(--accent);
+      background: var(--blue); color: white;
+    }
+    .featured-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: white;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 100px;
+      white-space: nowrap;
+    }
+    .plan-name { font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .pricing-card.featured .plan-name { color: rgba(255,255,255,0.7); }
+    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .plan-price span { font-size: 1.2rem; font-weight: 500; }
+    .plan-period { font-size: 0.85rem; color: var(--gray); margin-bottom: 28px; }
+    .pricing-card.featured .plan-period { color: rgba(255,255,255,0.6); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .plan-features li { font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .pricing-card.featured .plan-features li { color: rgba(255,255,255,0.9); }
+    .pricing-card.featured .plan-features li::before { color: #7EC8F8; }
+    .plan-cta {
+      display: block; text-align: center; padding: 14px;
+      border-radius: 10px; font-weight: 700; text-decoration: none;
+      background: var(--light); color: var(--blue);
+      transition: all 0.2s;
+    }
+    .plan-cta:hover { background: var(--accent); color: white; }
+    .pricing-card.featured .plan-cta { background: var(--accent); color: white; }
+    .pricing-card.featured .plan-cta:hover { background: white; color: var(--blue); }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      background: linear-gradient(135deg, var(--blue), #1A6AB8);
+      text-align: center; padding: 80px 5%;
+    }
+    .guarantee-icon { font-size: 4rem; margin-bottom: 24px; }
+    .guarantee h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: white; max-width: 700px; margin: 0 auto 16px; }
+    .guarantee p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 520px; margin: 0 auto 40px; }
+
+    /* ── NICHES ── */
+    .niches-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; margin-top: 56px;
+    }
+    .niche-card {
+      background: var(--light); border-radius: 12px;
+      padding: 24px; text-align: center; border: 1px solid #D1E8FF;
+    }
+    .niche-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .niche-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--blue); }
+    .niche-card p { font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+
+    /* ── CTA ── */
+    .final-cta {
+      background: var(--dark); text-align: center; padding: 100px 5%;
+    }
+    .final-cta h2 { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 900; color: white; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .final-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 40px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0A1525; padding: 40px 5%;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+      gap: 16px;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 800; color: white; }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid #E5EAF0; padding: 24px 0; }
+    .faq-item h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .faq-item p { font-size: 0.92rem; color: var(--gray); }
+
+    /* ── CONTACT FORM ── */
+    .contact-form {
+      max-width: 580px; margin: 48px auto 0;
+      background: white; border-radius: 16px;
+      padding: 40px; border: 1px solid #E5EAF0;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .form-row { display: flex; gap: 16px; }
+    .form-group { flex: 1; margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid #E5EAF0; border-radius: 8px;
+      font-family: inherit; font-size: 0.95rem; color: var(--dark);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-submit {
+      width: 100%; padding: 14px;
+      background: var(--accent); color: white; border: none; cursor: pointer;
+      border-radius: 10px; font-weight: 700; font-size: 1rem;
+      font-family: inherit; transition: background 0.2s;
+    }
+    .form-submit:hover { background: #1A7DD4; }
+    .form-note { font-size: 0.8rem; color: var(--gray); text-align: center; margin-top: 12px; }
+
+    @media (max-width: 640px) {
+      .form-row { flex-direction: column; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Lead<span>Flow</span></div>
+  <a href="#contact" class="nav-cta">Get Free Analysis →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🏆 Home Services Marketing Specialists</div>
+  <h1>Get <span>10–20 More Calls</span><br/>Every Single Month</h1>
+  <p>We use Google Ads and AI-powered follow-up to flood your phone with inbound leads. No long contracts. Results in 30 days or we work free.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Get My Free Lead Analysis →</a>
+    <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">10–20</div>
+      <div class="stat-label">More calls per month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4–6×</div>
+      <div class="stat-label">Average ROI</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30</div>
+      <div class="stat-label">Days to first results</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Setup fee</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>✓ HVAC Companies</span><span>✓ Plumbers</span><span>✓ Roofers</span>
+    <span>✓ Electricians</span><span>✓ Pest Control</span><span>✓ Landscapers</span>
+    <span>✓ General Contractors</span><span>✓ Garage Door Companies</span>
+    <span>✓ HVAC Companies</span><span>✓ Plumbers</span><span>✓ Roofers</span>
+    <span>✓ Electricians</span><span>✓ Pest Control</span><span>✓ Landscapers</span>
+    <span>✓ General Contractors</span><span>✓ Garage Door Companies</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-center">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Your competitors are getting<br/>calls that should be yours</h2>
+    <p class="section-sub">Every day you're not showing up first on Google, you're handing jobs to companies with worse service.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">📉</div>
+      <h3>Invisible on Google</h3>
+      <p>87% of customers search online before calling. If you're not on page one, you don't exist to them.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">📵</div>
+      <h3>Missed Calls = Lost Revenue</h3>
+      <p>The average home service company misses 15+ calls per month. At $650/job, that's $9,750 walking out the door.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">⏱️</div>
+      <h3>No Time to Market</h3>
+      <p>You're running a crew, managing jobs, and handling customers. You shouldn't also have to be a marketing expert.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">💸</div>
+      <h3>Wasted Ad Spend</h3>
+      <p>Generic agencies burn your budget on the wrong keywords and never call you back. We specialize only in home services.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-center">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Simple. Hands-free. Effective.</h2>
+    <p class="section-sub">We handle everything. You just answer the phone and do the work.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Free Lead Analysis (15 min)</h3>
+        <p>We audit your current online presence, find the gaps, and show you exactly how many more calls you should be getting. No fluff — just data.</p>
+        <span class="tag">Free · No obligation</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>We Build Your Lead Machine</h3>
+        <p>We set up Google Ads targeting your exact service area, optimize your Google Business Profile, and install AI-powered follow-up that texts missed callers within 2 minutes.</p>
+        <span class="tag">Done in 5 business days</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Your Phone Starts Ringing</h3>
+        <p>Customers searching for your services right now start calling you. Our AI follows up with anyone who doesn't reach you and books them automatically.</p>
+        <span class="tag">Results within 30 days</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>We Optimize Every Month</h3>
+        <p>You get a clear report showing every lead, every call, and every dollar spent. We continuously improve the campaigns to lower your cost-per-call over time.</p>
+        <span class="tag">Monthly reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NICHES -->
+<section style="background: var(--light-gray);">
+  <div class="section-center">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for home service businesses</h2>
+    <p class="section-sub">We specialize exclusively in trades and home services — we know your market, your customers, and your seasonality.</p>
+  </div>
+  <div class="niches-grid">
+    <div class="niche-card"><div class="niche-icon">❄️</div><h3>HVAC</h3><p>AC repair, heating, installation</p></div>
+    <div class="niche-card"><div class="niche-icon">🔧</div><h3>Plumbing</h3><p>Emergency, residential & commercial</p></div>
+    <div class="niche-card"><div class="niche-icon">🏠</div><h3>Roofing</h3><p>Repair, replacement & inspections</p></div>
+    <div class="niche-card"><div class="niche-icon">⚡</div><h3>Electrical</h3><p>Residential & commercial wiring</p></div>
+    <div class="niche-card"><div class="niche-icon">🐜</div><h3>Pest Control</h3><p>Residential & commercial extermination</p></div>
+    <div class="niche-card"><div class="niche-icon">🌿</div><h3>Landscaping</h3><p>Lawn care, design & maintenance</p></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="section-center">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Transparent. No surprises.</h2>
+    <p class="section-sub">Cancel anytime. No setup fees. No long-term contracts.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><span>$</span>997</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li>Google Business Profile optimization</li>
+        <li>AI missed-call text-back (2 min response)</li>
+        <li>Landing page + call tracking</li>
+        <li>Monthly performance report</li>
+        <li>Up to 50 leads/month</li>
+      </ul>
+      <a href="#contact" class="plan-cta">Get Started</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="featured-badge">⭐ Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-price"><span>$</span>1,997</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li>Everything in Starter, plus:</li>
+        <li>Google Ads management (up to $2k spend)</li>
+        <li>Reputation management & review requests</li>
+        <li>Bi-weekly strategy calls</li>
+        <li>Up to 150 leads/month</li>
+      </ul>
+      <a href="#contact" class="plan-cta">Get Started</a>
+    </div>
+    <div class="pricing-card">
+      <div class="plan-name">Dominator</div>
+      <div class="plan-price"><span>$</span>3,497</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li>Everything in Growth, plus:</li>
+        <li>Google Ads (up to $5k ad spend)</li>
+        <li>Facebook & Instagram retargeting</li>
+        <li>Full AI follow-up sequence</li>
+        <li>Competitor analysis & priority support</li>
+      </ul>
+      <a href="#contact" class="plan-cta">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-icon">🛡️</div>
+  <h2>10 Qualified Leads in 30 Days — or We Work Free Until You Get Them</h2>
+  <p>We put our money where our mouth is. If we don't deliver, you don't pay. Simple as that.</p>
+  <a href="#contact" class="btn-primary">Claim Your Free Analysis</a>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-center">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>How quickly will I see results?</h3>
+      <p>Most clients receive their first new inbound calls within 7–14 days of launch. Full results typically ramp up over 30–60 days as we optimize the campaigns.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to sign a long-term contract?</h3>
+      <p>No. We work month-to-month. You can cancel anytime. We keep clients by getting results, not by locking them in.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's included in the free analysis?</h3>
+      <p>We audit your Google Business Profile, review your current online visibility, check what your top 3 competitors are doing, and show you exactly how many more calls we believe we can generate for you.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to provide anything?</h3>
+      <p>Just access to your Google Business Profile and a budget for ad spend (if on the Growth or Dominator plan). We handle the rest — no technical knowledge needed.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I already run Google Ads?</h3>
+      <p>Great — we can audit your existing campaigns for free and show you where spend is being wasted. Most clients we audit are spending 30–50% more than they need to.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--light-gray);">
+  <div class="section-center">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-title">Get your free lead analysis</h2>
+    <p class="section-sub">Takes 2 minutes to fill out. We'll reach out within 1 business day with a full breakdown.</p>
+  </div>
+  <form class="contact-form" name="lead-analysis" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you">
+    <input type="hidden" name="form-name" value="lead-analysis" />
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="John" required />
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Smith" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="business-name">Business Name</label>
+      <input type="text" id="business-name" name="business-name" placeholder="Smith's HVAC & Plumbing" required />
+    </div>
+    <div class="form-group">
+      <label for="trade">Your Trade</label>
+      <select id="trade" name="trade" required>
+        <option value="">Select your trade...</option>
+        <option>HVAC</option>
+        <option>Plumbing</option>
+        <option>Roofing</option>
+        <option>Electrical</option>
+        <option>Pest Control</option>
+        <option>Landscaping</option>
+        <option>General Contractor</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required />
+      </div>
+      <div class="form-group">
+        <label for="city">City / Service Area</label>
+        <input type="text" id="city" name="city" placeholder="Austin, TX" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="john@smithshvac.com" required />
+    </div>
+    <button type="submit" class="form-submit">Get My Free Lead Analysis →</button>
+    <p class="form-note">🔒 No spam. No obligation. We'll reach out within 1 business day.</p>
+  </form>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to make your phone ring?</h2>
+  <p>Join home service companies who are getting 10–20 more calls per month with zero extra effort.</p>
+  <a href="#contact" class="btn-primary">Start Free Analysis →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lead<span>Flow</span> Agency</div>
+  <p>© 2026 LeadFlow Agency. All rights reserved.</p>
+  <p>More calls. More jobs. Guaranteed.</p>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Native form validation feedback
+  const form = document.querySelector('form[name="lead-analysis"]');
+  if (form) {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — LeadFlow Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0D1B2E 0%, #1A4A8A 60%, #2E9BF5 100%);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white; border-radius: 20px;
+      padding: 60px 48px; text-align: center;
+      max-width: 540px; width: 100%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    }
+    .icon { font-size: 4rem; margin-bottom: 24px; }
+    h1 { font-size: 2rem; font-weight: 900; color: #1A4A8A; margin-bottom: 16px; letter-spacing: -0.5px; }
+    p { font-size: 1.05rem; color: #6B7280; line-height: 1.7; margin-bottom: 12px; }
+    .highlight { color: #1A4A8A; font-weight: 700; }
+    .divider { border: none; border-top: 1px solid #E5EAF0; margin: 28px 0; }
+    .what-next { background: #EBF4FF; border-radius: 12px; padding: 24px; margin: 28px 0; text-align: left; }
+    .what-next h3 { font-size: 0.85rem; font-weight: 700; color: #2E9BF5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .what-next li { font-size: 0.92rem; color: #0D1B2E; margin-bottom: 8px; padding-left: 8px; list-style: none; }
+    .what-next li::before { content: '✓  '; color: #10B981; font-weight: 700; }
+    .back-btn {
+      display: inline-block; margin-top: 8px;
+      background: #2E9BF5; color: white; text-decoration: none;
+      padding: 14px 32px; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: #1A7DD4; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🎉</div>
+    <h1>You're all set!</h1>
+    <p>We received your request and will have your <span class="highlight">free lead analysis</span> ready within <span class="highlight">1 business day.</span></p>
+    <p>Keep an eye on your inbox — we'll send over exactly what we found and how many more calls we can get you.</p>
+    <hr class="divider" />
+    <div class="what-next">
+      <h3>What happens next</h3>
+      <ul>
+        <li>We audit your Google listing & online presence</li>
+        <li>We check what your top 3 competitors are doing</li>
+        <li>We send you a breakdown with our recommendations</li>
+        <li>We schedule a free 15-min call to walk you through it</li>
+      </ul>
+    </div>
+    <a href="/" class="back-btn">← Back to Home</a>
+  </div>
+</body>
+</html>
